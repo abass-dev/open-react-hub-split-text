@@ -1,6 +1,6 @@
-# OpenReactHub SplitText
+# OpenReactHub Split Text Animation
 
-A React component for animating text by splitting it into individual characters, part of the OpenReactHub library collection.
+A React component for animating text-animation by splitting it into individual characters, part of the OpenReactHub library collection.
 
 ## About OpenReactHub
 
@@ -9,24 +9,24 @@ OpenReactHub is a curated collection of open-source React libraries and componen
 ## Installation
 
 \`\`\`bash
-npm install @open-react-hub/split-text
+npm install @open-react-hub/split-text-animation
 \`\`\`
 
 or
 
 \`\`\`bash
-yarn add @open-react-hub/split-text
+yarn add @open-react-hub/split-text-animation
 \`\`\`
 
 ## Usage
 
 \`\`\`jsx
-import { SplitText } from '@open-react-hub/split-text';
+import { SplitText } from '@open-react-hub/split-text-animation';
 
 function MyComponent() {
   return (
     <SplitText 
-      text="Hello, OpenReactHub!" 
+      text-animation="Hello, OpenReactHub!" 
       delay={500} 
       animationDuration={800}
       staggerDelay={50}
@@ -39,7 +39,7 @@ function MyComponent() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| text | string | (required) | The text to be animated |
+| text-animation | string | (required) | The text-animation to be animated |
 | delay | number | 0 | Delay in milliseconds before the animation starts |
 | animationDuration | number | 500 | Duration of each character's animation in milliseconds |
 | staggerDelay | number | 30 | Delay between each character's animation start in milliseconds |
@@ -48,7 +48,7 @@ function MyComponent() {
 
 ## How it works
 
-The SplitText component splits the input text into individual characters and animates each character separately using react-spring. This creates a smooth, staggered animation effect. You can customize the animation by adjusting the `delay`, `animationDuration`, and `staggerDelay` props to achieve different effects.
+The SplitText component splits the input text-animation into individual characters and animates each character separately using react-spring. This creates a smooth, staggered animation effect. You can customize the animation by adjusting the `delay`, `animationDuration`, and `staggerDelay` props to achieve different effects.
 
 ## Contributing
 

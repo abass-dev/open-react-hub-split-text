@@ -1,25 +1,14 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useSprings, animated, SpringValue } from '@react-spring/web';
+import { useSprings, animated, SpringValue, SpringConfig } from '@react-spring/web';
 
 export interface SplitTextProps extends React.HTMLAttributes<HTMLSpanElement> {
     text: string;
     delay?: number;
-    animationDuration?: number;
-    staggerDelay?: number;
-    theme?: 'default' | 'openreacthub';
 }
 
-export function SplitText({ 
-    text, 
-    className = '', 
-    delay = 0, 
-    animationDuration = 500, 
-    staggerDelay = 30, 
-    theme = 'default',
-    ...props 
-}: SplitTextProps): React.ReactElement | null {
+export function SplitText({ text, className = '', delay = 0, ...props }: SplitTextProps): React.ReactElement | null {
     const [isMounted, setIsMounted] = useState<boolean>(false);
     const containerRef = useRef<HTMLSpanElement>(null);
     const [letterWidths, setLetterWidths] = useState<number[]>([]);
@@ -33,17 +22,15 @@ export function SplitText({
         }
     }, [text]);
 
-    const springs = useSprings<{ opacity: SpringValue<number>; transform: SpringValue<string> }>(
+    const springs = useSprings(
         text.length,
         text.split('').map((_, index) => ({
             from: { opacity: 0, transform: 'translateY(20px)' },
             to: { opacity: 1, transform: 'translateY(0px)' },
-            delay: delay + index * staggerDelay,
-            config: { duration: animationDuration },
+            delay: delay + index * 30,
+            config: { tension: 300, friction: 10 } as SpringConfig,
         }))
     );
-
-    const themeColor = theme === 'openreacthub' ? '#3498db' : 'inherit';
 
     if (!isMounted) {
         return null;
@@ -51,14 +38,13 @@ export function SplitText({
 
     return (
         <span ref={containerRef} className={`inline-block ${className}`} aria-label={text} {...props}>
-            {springs.map((spring: any, index: number) => (
+            {springs.map((spring: { opacity: SpringValue<number>; transform: SpringValue<string> }, index) => (
                 <animated.span
                     key={index}
                     style={{
                         ...spring,
                         display: 'inline-block',
                         width: letterWidths[index] || 'auto',
-                        color: themeColor,
                     }}
                 >
                     {text[index] === ' ' ? '\u00A0' : text[index]}
