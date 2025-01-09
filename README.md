@@ -8,19 +8,19 @@ OpenReactHub is a curated collection of open-source React libraries and componen
 
 ## Installation
 
-\`\`\`bash
+`bash
 npm install @open-react-hub/split-text-animation
-\`\`\`
+`
 
 or
 
-\`\`\`bash
+`bash
 yarn add @open-react-hub/split-text-animation
-\`\`\`
+`
 
 ## Usage
 
-\`\`\`jsx
+`jsx
 import { SplitText } from '@open-react-hub/split-text-animation';
 
 function MyComponent() {
@@ -33,7 +33,7 @@ function MyComponent() {
     />
   );
 }
-\`\`\`
+`
 
 ## Props
 
